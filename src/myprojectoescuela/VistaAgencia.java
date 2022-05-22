@@ -11,6 +11,9 @@ public class VistaAgencia extends javax.swing.JFrame {
      */
     public VistaAgencia() {
         initComponents();
+        tbTipoVehiculo.setEnabledAt(0, false);
+        tbTipoVehiculo.setEnabledAt(1, false);
+        tbTipoVehiculo.setEnabledAt(2, false);
     }
 
     /**
@@ -28,9 +31,9 @@ public class VistaAgencia extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tbTipoVehiculo = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bCrearAutomovil = new javax.swing.JButton();
+        bActualizarAutomovil = new javax.swing.JButton();
+        bEliminarAutomovil = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaToAutomovil = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
@@ -38,21 +41,21 @@ public class VistaAgencia extends javax.swing.JFrame {
         tfCaballosFuerza = new javax.swing.JTextField();
         tfNoPuertas = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        bCrearMotocicleta = new javax.swing.JButton();
+        bActualizarMotocicleta = new javax.swing.JButton();
+        bEliminarMotocicleta = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaToMotocicleta = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         tfPotencia = new javax.swing.JTextField();
         tfRodada = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        jTextAreaToAutoElectrico = new javax.swing.JTextArea();
+        bCrearAutoElectrico = new javax.swing.JButton();
+        bActualizarAutoElectrico = new javax.swing.JButton();
+        bEliminarAutoElectrico = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         tfDuracionBateria = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -64,8 +67,10 @@ public class VistaAgencia extends javax.swing.JFrame {
         tfMarca = new javax.swing.JTextField();
         tfModelo = new javax.swing.JTextField();
         tfColor = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
+        bConsulta = new javax.swing.JButton();
         tfConsulta = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        cbTipoVehiculo = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -100,19 +105,22 @@ public class VistaAgencia extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Crear");
+        bCrearAutomovil.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bCrearAutomovil.setText("Crear");
 
-        jButton2.setText("Actualizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bActualizarAutomovil.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bActualizarAutomovil.setText("Actualizar");
+        bActualizarAutomovil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bActualizarAutomovilActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bEliminarAutomovil.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bEliminarAutomovil.setText("Eliminar");
+        bEliminarAutomovil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bEliminarAutomovilActionPerformed(evt);
             }
         });
 
@@ -120,8 +128,10 @@ public class VistaAgencia extends javax.swing.JFrame {
         jTextAreaToAutomovil.setRows(5);
         jScrollPane2.setViewportView(jTextAreaToAutomovil);
 
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setText("Caballos de fuerza:");
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setText("Número de puertas:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -133,18 +143,18 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 4, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfNoPuertas))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(bCrearAutomovil)
                                 .addGap(20, 20, 20)
-                                .addComponent(jButton2)
+                                .addComponent(bActualizarAutomovil)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3))
+                                .addComponent(bEliminarAutomovil))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -164,9 +174,9 @@ public class VistaAgencia extends javax.swing.JFrame {
                     .addComponent(tfNoPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(bEliminarAutomovil)
+                    .addComponent(bCrearAutomovil)
+                    .addComponent(bActualizarAutomovil))
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -174,33 +184,38 @@ public class VistaAgencia extends javax.swing.JFrame {
 
         tbTipoVehiculo.addTab("Automovil", jPanel4);
 
-        jButton4.setText("Crear");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bCrearMotocicleta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bCrearMotocicleta.setText("Crear");
+        bCrearMotocicleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bCrearMotocicletaActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Actualizar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        bActualizarMotocicleta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bActualizarMotocicleta.setText("Actualizar");
+        bActualizarMotocicleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                bActualizarMotocicletaActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Eliminar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        bEliminarMotocicleta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bEliminarMotocicleta.setText("Eliminar");
+        bEliminarMotocicleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                bEliminarMotocicletaActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaToMotocicleta.setColumns(20);
+        jTextAreaToMotocicleta.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaToMotocicleta);
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel8.setText("Potencia:");
 
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("Rodada:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -215,15 +230,15 @@ public class VistaAgencia extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
-                            .addComponent(jButton4))
+                            .addComponent(bCrearMotocicleta))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
-                                .addComponent(jButton5)
+                                .addComponent(bActualizarMotocicleta)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6)
-                                .addGap(0, 160, Short.MAX_VALUE))
+                                .addComponent(bEliminarMotocicleta)
+                                .addGap(0, 149, Short.MAX_VALUE))
                             .addComponent(tfRodada)
                             .addComponent(tfPotencia))))
                 .addContainerGap())
@@ -241,9 +256,9 @@ public class VistaAgencia extends javax.swing.JFrame {
                     .addComponent(tfRodada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton4))
+                    .addComponent(bActualizarMotocicleta)
+                    .addComponent(bEliminarMotocicleta)
+                    .addComponent(bCrearMotocicleta))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -251,21 +266,25 @@ public class VistaAgencia extends javax.swing.JFrame {
 
         tbTipoVehiculo.addTab("Motocicleta", jPanel5);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        jTextAreaToAutoElectrico.setColumns(20);
+        jTextAreaToAutoElectrico.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaToAutoElectrico);
 
-        jButton9.setText("Crear");
+        bCrearAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bCrearAutoElectrico.setText("Crear");
 
-        jButton10.setText("Actualizar");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        bActualizarAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bActualizarAutoElectrico.setText("Actualizar");
+        bActualizarAutoElectrico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                bActualizarAutoElectricoActionPerformed(evt);
             }
         });
 
-        jButton11.setText("Eliminar");
+        bEliminarAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bEliminarAutoElectrico.setText("Eliminar");
 
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setText("Duración de la bateria:");
 
         tfDuracionBateria.addActionListener(new java.awt.event.ActionListener() {
@@ -283,12 +302,12 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jButton9)
+                        .addComponent(bCrearAutoElectrico)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton10)
+                        .addComponent(bActualizarAutoElectrico)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton11)
-                        .addGap(0, 163, Short.MAX_VALUE))
+                        .addComponent(bEliminarAutoElectrico)
+                        .addGap(0, 152, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -304,11 +323,11 @@ public class VistaAgencia extends javax.swing.JFrame {
                     .addComponent(tfDuracionBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10)
-                    .addComponent(jButton11))
+                    .addComponent(bCrearAutoElectrico)
+                    .addComponent(bActualizarAutoElectrico)
+                    .addComponent(bEliminarAutoElectrico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -316,15 +335,19 @@ public class VistaAgencia extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Número de serie:");
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Marca del vehiculo:");
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Modelo:");
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Color:");
 
@@ -340,7 +363,19 @@ public class VistaAgencia extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("Consulta");
+        bConsulta.setText("Consulta");
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Tipo de vehiculo:");
+
+        cbTipoVehiculo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cbTipoVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automovil", "Motocicleta", "Auto Electrico" }));
+        cbTipoVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTipoVehiculoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -360,17 +395,26 @@ public class VistaAgencia extends javax.swing.JFrame {
                             .addComponent(tfNoSerie)
                             .addComponent(tfMarca)
                             .addComponent(tfModelo)
-                            .addComponent(tfColor)))
+                            .addComponent(tfColor)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(tfConsulta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8)))
+                        .addComponent(bConsulta)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(cbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tfNoSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -389,8 +433,8 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8))
-                .addContainerGap())
+                    .addComponent(bConsulta))
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -413,8 +457,8 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(tbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -424,37 +468,65 @@ public class VistaAgencia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNoSerieActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bCrearMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearMotocicletaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bCrearMotocicletaActionPerformed
 
     private void tfDuracionBateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDuracionBateriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfDuracionBateriaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void bActualizarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarMotocicletaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_bActualizarMotocicletaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bActualizarAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarAutomovilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bActualizarAutomovilActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bEliminarAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAutomovilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bEliminarAutomovilActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void bEliminarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarMotocicletaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_bEliminarMotocicletaActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void bActualizarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarAutoElectricoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_bActualizarAutoElectricoActionPerformed
 
     private void tfMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMarcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfMarcaActionPerformed
+
+    private void cbTipoVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoVehiculoActionPerformed
+        bCrearAutomovil.setEnabled(true);
+        bCrearMotocicleta.setEnabled(true);
+        bCrearAutoElectrico.setEnabled(true);
+        switch (cbTipoVehiculo.getSelectedIndex()) {
+            case 0:
+                tbTipoVehiculo.setEnabledAt(0, true);
+                tfCaballosFuerza.setEnabled(true);
+                tfNoPuertas.setEnabled(true);
+                vehiculo = new Automovil();
+                break;
+            case 1:
+                tbTipoVehiculo.setEnabledAt(1, true);
+                tfPotencia.setEnabled(true);
+                tfRodada.setEnabled(true);
+                vehiculo = new Motocicleta();
+                break;
+            case 2:
+                tbTipoVehiculo.setEnabledAt(0, true);
+                tbTipoVehiculo.setEnabledAt(2, true);
+                tfCaballosFuerza.setEnabled(true);
+                tfNoPuertas.setEnabled(true);
+                tfDuracionBateria.setEnabled(true);
+                vehiculo = new AutoElectrico();
+                break;
+        }
+    }//GEN-LAST:event_cbTipoVehiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -492,18 +564,20 @@ public class VistaAgencia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton bActualizarAutoElectrico;
+    private javax.swing.JButton bActualizarAutomovil;
+    private javax.swing.JButton bActualizarMotocicleta;
+    private javax.swing.JButton bConsulta;
+    private javax.swing.JButton bCrearAutoElectrico;
+    private javax.swing.JButton bCrearAutomovil;
+    private javax.swing.JButton bCrearMotocicleta;
+    private javax.swing.JButton bEliminarAutoElectrico;
+    private javax.swing.JButton bEliminarAutomovil;
+    private javax.swing.JButton bEliminarMotocicleta;
+    private javax.swing.JComboBox<String> cbTipoVehiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -521,9 +595,9 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextAreaToAutoElectrico;
     private javax.swing.JTextArea jTextAreaToAutomovil;
+    private javax.swing.JTextArea jTextAreaToMotocicleta;
     private myprojectoescuela.Motocicleta motocicleta1;
     private javax.swing.JTabbedPane tbTipoVehiculo;
     private javax.swing.JTextField tfCaballosFuerza;
@@ -537,4 +611,5 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JTextField tfPotencia;
     private javax.swing.JTextField tfRodada;
     // End of variables declaration//GEN-END:variables
+    private Vehiculo vehiculo;
 }
