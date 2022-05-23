@@ -140,7 +140,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="bEliminarAutomovil" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="bConsulta" min="-2" max="-2" attributes="0"/>
+                                      <Component id="bConsultaAutomovil" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -172,7 +172,7 @@
                           <Component id="bEliminarAutomovil" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bCrearAutomovil" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bActualizarAutomovil" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="bConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bConsultaAutomovil" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="140" max="-2" attributes="0"/>
@@ -250,7 +250,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="tfNoPuertas">
             </Component>
-            <Component class="javax.swing.JButton" name="bConsulta">
+            <Component class="javax.swing.JButton" name="bConsultaAutomovil">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="0"/>

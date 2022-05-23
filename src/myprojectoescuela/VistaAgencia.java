@@ -39,7 +39,7 @@ public class VistaAgencia extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         tfCaballosFuerza = new javax.swing.JTextField();
         tfNoPuertas = new javax.swing.JTextField();
-        bConsulta = new javax.swing.JButton();
+        bConsultaAutomovil = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         bCrearMotocicleta = new javax.swing.JButton();
         bActualizarMotocicleta = new javax.swing.JButton();
@@ -137,8 +137,8 @@ public class VistaAgencia extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setText("Número de puertas:");
 
-        bConsulta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        bConsulta.setText("Consulta");
+        bConsultaAutomovil.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bConsultaAutomovil.setText("Consulta");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -162,7 +162,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(bEliminarAutomovil)
                                 .addGap(18, 18, 18)
-                                .addComponent(bConsulta))
+                                .addComponent(bConsultaAutomovil))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -185,7 +185,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                     .addComponent(bEliminarAutomovil)
                     .addComponent(bCrearAutomovil)
                     .addComponent(bActualizarAutomovil)
-                    .addComponent(bConsulta))
+                    .addComponent(bConsultaAutomovil))
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -597,7 +597,7 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JButton bActualizarAutoElectrico;
     private javax.swing.JButton bActualizarAutomovil;
     private javax.swing.JButton bActualizarMotocicleta;
-    private javax.swing.JButton bConsulta;
+    private javax.swing.JButton bConsultaAutomovil;
     private javax.swing.JButton bCrearAutoElectrico;
     private javax.swing.JButton bCrearAutomovil;
     private javax.swing.JButton bCrearMotocicleta;
