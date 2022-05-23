@@ -1,9 +1,7 @@
 package myprojectoescuela;
 
-/**
- *
- * @author
- */
+import javax.swing.JOptionPane;
+
 public class VistaAgencia extends javax.swing.JFrame {
 
     /**
@@ -14,6 +12,7 @@ public class VistaAgencia extends javax.swing.JFrame {
         tbTipoVehiculo.setEnabledAt(0, false);
         tbTipoVehiculo.setEnabledAt(1, false);
         tbTipoVehiculo.setEnabledAt(2, false);
+
     }
 
     /**
@@ -40,6 +39,7 @@ public class VistaAgencia extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         tfCaballosFuerza = new javax.swing.JTextField();
         tfNoPuertas = new javax.swing.JTextField();
+        bConsulta = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         bCrearMotocicleta = new javax.swing.JButton();
         bActualizarMotocicleta = new javax.swing.JButton();
@@ -67,8 +67,6 @@ public class VistaAgencia extends javax.swing.JFrame {
         tfMarca = new javax.swing.JTextField();
         tfModelo = new javax.swing.JTextField();
         tfColor = new javax.swing.JTextField();
-        bConsulta = new javax.swing.JButton();
-        tfConsulta = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cbTipoVehiculo = new javax.swing.JComboBox<>();
 
@@ -107,6 +105,11 @@ public class VistaAgencia extends javax.swing.JFrame {
 
         bCrearAutomovil.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bCrearAutomovil.setText("Crear");
+        bCrearAutomovil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCrearAutomovilActionPerformed(evt);
+            }
+        });
 
         bActualizarAutomovil.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bActualizarAutomovil.setText("Actualizar");
@@ -134,6 +137,9 @@ public class VistaAgencia extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setText("Número de puertas:");
 
+        bConsulta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bConsulta.setText("Consulta");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -154,7 +160,9 @@ public class VistaAgencia extends javax.swing.JFrame {
                                 .addGap(20, 20, 20)
                                 .addComponent(bActualizarAutomovil)
                                 .addGap(18, 18, 18)
-                                .addComponent(bEliminarAutomovil))
+                                .addComponent(bEliminarAutomovil)
+                                .addGap(18, 18, 18)
+                                .addComponent(bConsulta))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,7 +184,8 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bEliminarAutomovil)
                     .addComponent(bCrearAutomovil)
-                    .addComponent(bActualizarAutomovil))
+                    .addComponent(bActualizarAutomovil)
+                    .addComponent(bConsulta))
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -363,8 +372,6 @@ public class VistaAgencia extends javax.swing.JFrame {
             }
         });
 
-        bConsulta.setText("Consulta");
-
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Tipo de vehiculo:");
@@ -384,27 +391,21 @@ public class VistaAgencia extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfNoSerie)
-                            .addComponent(tfMarca)
-                            .addComponent(tfModelo)
-                            .addComponent(tfColor)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfNoSerie)
+                    .addComponent(tfMarca)
+                    .addComponent(tfModelo)
+                    .addComponent(tfColor)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(tfConsulta)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bConsulta)))
+                        .addComponent(cbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -430,11 +431,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tfColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bConsulta))
-                .addGap(27, 27, 27))
+                .addGap(64, 64, 64))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -528,10 +525,37 @@ public class VistaAgencia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbTipoVehiculoActionPerformed
 
+    private void bCrearAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutomovilActionPerformed
+        Automovil automovil = new Automovil();
+        ((Automovil) vehiculo).setNoSerie(tfMarca.getText());
+        indice = crud.find(vehiculo);
+        if (indice == -1) {
+            ((Automovil) vehiculo).setMarca(tfMarca.getText());
+            ((Automovil) vehiculo).setModelo(tfModelo.getText());
+            ((Automovil) vehiculo).setColor(tfColor.getText().charAt(0));
+            automovil.setCaballosFuerza(Float.parseFloat(tfCaballosFuerza.getText()));
+            automovil.setNoPuertas(Float.parseFloat(tfNoPuertas.getText()));
+            crud.create(vehiculo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Persona existente");
+        }
+    }//GEN-LAST:event_bCrearAutomovilActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        //declaran variables
+        Vehiculo vehiculo;
+        ManejadorArchivo manejadorArchivo = new ManejadorArchivo();
+        CRUD crud = new CRUD();
+        int indice = 0;
+        int opc;
+
+        //carga el archivo al arreglo
+        indice = manejadorArchivo.leerArchivo(crud.getGrupo());
+        crud.setIndice(indice);
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -561,6 +585,10 @@ public class VistaAgencia extends javax.swing.JFrame {
                 new VistaAgencia().setVisible(true);
             }
         });
+
+        //guarda el arreglo en el archivo
+        manejadorArchivo.escribirArchivo(crud.getGrupo(), crud.getIndice());
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -602,7 +630,6 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tbTipoVehiculo;
     private javax.swing.JTextField tfCaballosFuerza;
     private javax.swing.JTextField tfColor;
-    private javax.swing.JTextField tfConsulta;
     private javax.swing.JTextField tfDuracionBateria;
     private javax.swing.JTextField tfMarca;
     private javax.swing.JTextField tfModelo;
@@ -612,4 +639,8 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JTextField tfRodada;
     // End of variables declaration//GEN-END:variables
     private Vehiculo vehiculo;
+    ManejadorArchivo manejadorArchivo = new ManejadorArchivo();
+    CRUD crud = new CRUD();
+    int indice = 0;
+    int opc;
 }

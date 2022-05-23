@@ -13,7 +13,7 @@ public class CRUD {
     /**
      * @return the vehiculo
      */
-    public Vehiculo[] getVehiculo() {
+    public Vehiculo[] getGrupo() {
         return grupo;
     }
 
@@ -42,7 +42,7 @@ public class CRUD {
         grupo[indice] = vehiculo;
         indice++;
     }
-
+    
     public String read() {
         String cadena = "";
         for (int i = 0; i < indice; i++) {
