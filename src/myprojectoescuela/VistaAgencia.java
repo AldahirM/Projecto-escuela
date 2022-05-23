@@ -527,6 +527,8 @@ public class VistaAgencia extends javax.swing.JFrame {
 
     private void bCrearAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutomovilActionPerformed
         Automovil automovil = new Automovil();
+        CRUD crud = new CRUD();
+        int indice = 0;
         ((Automovil) vehiculo).setNoSerie(tfMarca.getText());
         indice = crud.find(vehiculo);
         if (indice == -1) {
@@ -639,8 +641,5 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JTextField tfRodada;
     // End of variables declaration//GEN-END:variables
     private Vehiculo vehiculo;
-    ManejadorArchivo manejadorArchivo = new ManejadorArchivo();
-    CRUD crud = new CRUD();
-    int indice = 0;
-    int opc;
+
 }
