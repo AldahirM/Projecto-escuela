@@ -1,4 +1,4 @@
-package Agencia;
+package myprojectoescuela;
 
 public class AutoElectrico extends Automovil {
 

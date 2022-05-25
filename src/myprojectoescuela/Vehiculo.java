@@ -1,4 +1,4 @@
-package Agencia;
+package myprojectoescuela;
 
 import java.io.Serializable;
 

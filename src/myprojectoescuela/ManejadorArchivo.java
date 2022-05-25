@@ -1,4 +1,4 @@
-package Agencia;
+package myprojectoescuela;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

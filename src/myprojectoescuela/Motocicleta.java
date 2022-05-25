@@ -1,4 +1,4 @@
-package Agencia;
+package myprojectoescuela;
 
 public class Motocicleta extends Vehiculo {
 
