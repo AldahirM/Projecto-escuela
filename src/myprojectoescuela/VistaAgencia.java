@@ -620,6 +620,21 @@ public class VistaAgencia extends javax.swing.JFrame {
 
     private void bActualizarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarAutoElectricoActionPerformed
 	// TODO add your handling code here:
+        vehiculo = new AutoElectrico();
+	vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+	indice = crud.find(vehiculo);
+	if (indice >= 0) {
+	    JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+	    vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
+	    vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
+	    vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
+	    ((AutoElectrico) vehiculo).setCaballosFuerza(Float.parseFloat(JOptionPane.showInputDialog("Caballos de fuerza: ")));
+	    ((AutoElectrico) vehiculo).setNoPuertas(Byte.parseByte(JOptionPane.showInputDialog("Número de puertas: ")));
+	    ((AutoElectrico) vehiculo).setDuracionBateria(Float.parseFloat(JOptionPane.showInputDialog("Duracion de la bateria: ")));
+            crud.update(vehiculo);
+	} else {
+	    JOptionPane.showMessageDialog(null, "Auto Electrico inexistente");
+	}
     }//GEN-LAST:event_bActualizarAutoElectricoActionPerformed
 
     private void tfMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMarcaActionPerformed
@@ -689,10 +704,38 @@ public class VistaAgencia extends javax.swing.JFrame {
 
     private void bCrearAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutoElectricoActionPerformed
 	// TODO add your handling code here:
+        vehiculo = new AutoElectrico();
+        vehiculo.setNoSerie(tfNoSerie.getText());
+	indice = crud.find(vehiculo);
+	if (indice == -1) {
+	    vehiculo.setNoSerie(tfNoSerie.getText());
+	    vehiculo.setMarca(tfMarca.getText());
+	    vehiculo.setModelo(tfModelo.getText());
+	    vehiculo.setColor(tfColor.getText());
+	    ((AutoElectrico) vehiculo).setCaballosFuerza(Float.parseFloat(tfCaballosFuerza.getText()));
+	    ((AutoElectrico) vehiculo).setNoPuertas(Byte.parseByte(tfNoPuertas.getText()));
+            ((AutoElectrico) vehiculo).setDuracionBateria(Float.parseFloat(tfDuracionBateria.getText()));
+	    crud.create(vehiculo);
+	} else {
+	    JOptionPane.showMessageDialog(null, "Auto Electrico existente");
+	}
     }//GEN-LAST:event_bCrearAutoElectricoActionPerformed
 
     private void bEliminarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAutoElectricoActionPerformed
 	// TODO add your handling code here:
+        int op = 0;
+	vehiculo = new AutoElectrico();
+	vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+	indice = crud.find(vehiculo);
+	if (indice >= 0) {
+	    JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+	    op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+	    if (op == 0) {
+		crud.delete(vehiculo);
+	    }
+	} else {
+	    JOptionPane.showMessageDialog(null, "Auto Elecrico inexistente");
+	}
     }//GEN-LAST:event_bEliminarAutoElectricoActionPerformed
 
     /**
