@@ -555,12 +555,13 @@ public class VistaAgencia extends javax.swing.JFrame {
 
     private void bCrearAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutomovilActionPerformed
         vehiculo = new Automovil();
-        vehiculo.setNoSerie(tfMarca.getText());
+        vehiculo.setNoSerie(tfNoSerie.getText());
         indice = crud.find(vehiculo);
         if (indice == -1) {
+            vehiculo.setNoSerie(tfNoSerie.getText());
             vehiculo.setMarca(tfMarca.getText());
             vehiculo.setModelo(tfModelo.getText());
-            vehiculo.setColor(tfColor.getText().charAt(0));
+            vehiculo.setColor(tfColor.getText());
             ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(tfCaballosFuerza.getText()));
             ((Automovil) vehiculo).setNoPuertas(Float.parseFloat(tfNoPuertas.getText()));
             crud.create(vehiculo);
@@ -583,9 +584,6 @@ public class VistaAgencia extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        //declaran variables
-
-        //carga el archivo al arreglo
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -616,7 +614,6 @@ public class VistaAgencia extends javax.swing.JFrame {
             }
         });
 
-        //guarda el arreglo en el archivo
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

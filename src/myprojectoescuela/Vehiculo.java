@@ -7,9 +7,9 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     private String noSerie;
     private String marca;
     private String modelo;
-    private char color;
+    private String color;
 
-    public Vehiculo(String noSerie, String marca, String modelo, char color) {
+    public Vehiculo(String noSerie, String marca, String modelo, String color) {
         setNoSerie(noSerie);
         setMarca(marca);
         setModelo(modelo);
@@ -17,7 +17,7 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     }
 
     public Vehiculo() {
-        this("SIN NÚMERO", "SIN MARCA", "SIN MODELO", 'N');
+        this("SIN NÚMERO", "SIN MARCA", "SIN MODELO", "SIN COLOR");
     }
 
     public abstract double costoVehiculo();
@@ -69,20 +69,20 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     /**
      * @return the color
      */
-    public char getColor() {
+    public String getColor() {
         return color;
     }
 
     /**
      * @param color the color to set
      */
-    public void setColor(char color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
     @Override
     public String toString() {
-        return "Vehiculo{" + "noSerie=" + noSerie + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + '}';
+        return "noSerie=" + noSerie + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color;
     }
 
     @Override
