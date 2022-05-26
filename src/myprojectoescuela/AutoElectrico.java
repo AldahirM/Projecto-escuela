@@ -41,7 +41,7 @@ public class AutoElectrico extends Automovil {
     @Override
     public String combustible() {
 
-        return null;
+        return "Corriente recomendada de 220 V a 230 V";
 
     }
 

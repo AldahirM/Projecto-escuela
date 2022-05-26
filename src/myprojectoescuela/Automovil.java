@@ -54,11 +54,11 @@ public class Automovil extends Vehiculo {
 
         return 0;
     }
-
+    
     @Override
     public String combustible() {
 
-        return "Corriente recomendada de 220 V a 230 V";
+        return "Gasolina de 92 octanos";
         
     }
 
