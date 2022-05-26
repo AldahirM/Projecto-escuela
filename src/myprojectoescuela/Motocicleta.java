@@ -58,7 +58,7 @@ public class Motocicleta extends Vehiculo {
     @Override
     public String combustible() {
 
-        return null;
+        return "Gasolina de 87 octanos";
 
     }
 }
