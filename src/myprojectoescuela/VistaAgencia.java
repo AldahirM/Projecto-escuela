@@ -309,6 +309,11 @@ public class VistaAgencia extends javax.swing.JFrame {
 
         bCrearAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bCrearAutoElectrico.setText("Crear");
+        bCrearAutoElectrico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCrearAutoElectricoActionPerformed(evt);
+            }
+        });
 
         bActualizarAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bActualizarAutoElectrico.setText("Actualizar");
@@ -320,6 +325,11 @@ public class VistaAgencia extends javax.swing.JFrame {
 
         bEliminarAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bEliminarAutoElectrico.setText("Eliminar");
+        bEliminarAutoElectrico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarAutoElectricoActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setText("Duración de la bateria:");
@@ -556,7 +566,7 @@ public class VistaAgencia extends javax.swing.JFrame {
             ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(JOptionPane.showInputDialog("Número de puertas: ")));
             crud.update(vehiculo);
         } else {
-            JOptionPane.showMessageDialog(null, "Persona inexistente");
+            JOptionPane.showMessageDialog(null, "Automovil inexistente");
         }
     }//GEN-LAST:event_bActualizarAutomovilActionPerformed
 
@@ -572,7 +582,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                 crud.delete(vehiculo);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Persona inexistente");
+            JOptionPane.showMessageDialog(null, "Automovil inexistente");
         }
     }//GEN-LAST:event_bEliminarAutomovilActionPerformed
 
@@ -628,7 +638,7 @@ public class VistaAgencia extends javax.swing.JFrame {
             ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(tfNoPuertas.getText()));
             crud.create(vehiculo);
         } else {
-            JOptionPane.showMessageDialog(null, "Vehiculo existente");
+            JOptionPane.showMessageDialog(null, "Automovil existente");
         }
     }//GEN-LAST:event_bCrearAutomovilActionPerformed
 
@@ -648,6 +658,14 @@ public class VistaAgencia extends javax.swing.JFrame {
     private void bConsultarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarAutoElectricoActionPerformed
         jTextAreaToAutoElectrico.setText(crud.readAutoElectrico());
     }//GEN-LAST:event_bConsultarAutoElectricoActionPerformed
+
+    private void bCrearAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutoElectricoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bCrearAutoElectricoActionPerformed
+
+    private void bEliminarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAutoElectricoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bEliminarAutoElectricoActionPerformed
 
     /**
      * @param args the command line arguments
