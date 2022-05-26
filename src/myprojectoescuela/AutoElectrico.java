@@ -29,7 +29,7 @@ public class AutoElectrico extends Automovil {
     @Override
     public String toString() {
         return super.toString()
-                + ", Tipo: AutoElectrico" + ", duracion de la bateria=" + duracionBateria;
+                + ", Duración de la bateria:" + duracionBateria;
     }
 
     @Override

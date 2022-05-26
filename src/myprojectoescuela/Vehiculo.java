@@ -82,7 +82,7 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
 
     @Override
     public String toString() {
-        return "noSerie=" + noSerie + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color;
+        return "noSerie:" + noSerie + ", marca:" + marca + ", modelo:" + modelo + ", color:" + color;
     }
 
     @Override
