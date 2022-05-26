@@ -13,14 +13,14 @@ public class VistaAgencia extends javax.swing.JFrame {
      * Creates new form VistaAgencia
      */
     public VistaAgencia() {
-        initComponents();
+	initComponents();
 
-        tbTipoVehiculo.setEnabledAt(0, false);
-        tbTipoVehiculo.setEnabledAt(1, false);
-        tbTipoVehiculo.setEnabledAt(2, false);
+	tbTipoVehiculo.setEnabledAt(0, false);
+	tbTipoVehiculo.setEnabledAt(1, false);
+	tbTipoVehiculo.setEnabledAt(2, false);
 
-        indice = manejadorArchivo.leerArchivo(crud.getGrupo());
-        crud.setIndice(indice);
+	indice = manejadorArchivo.leerArchivo(crud.getGrupo());
+	crud.setIndice(indice);
     }
 
     /**
@@ -524,190 +524,218 @@ public class VistaAgencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfNoSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNoSerieActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_tfNoSerieActionPerformed
 
     private void bCrearMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearMotocicletaActionPerformed
-        vehiculo = new Motocicleta();
-        vehiculo.setNoSerie(tfNoSerie.getText());
-        indice = crud.find(vehiculo);
-        if (indice == -1) {
-            vehiculo.setNoSerie(tfNoSerie.getText());
-            vehiculo.setMarca(tfMarca.getText());
-            vehiculo.setModelo(tfModelo.getText());
-            vehiculo.setColor(tfColor.getText());
-            ((Motocicleta) vehiculo).setPotencia(Float.parseFloat(tfPotencia.getText()));
-            ((Motocicleta) vehiculo).setRodada(Byte.parseByte(tfRodada.getText()));
-            crud.create(vehiculo);
-        } else {
-            JOptionPane.showMessageDialog(null, "Motocicleta existente");
-        }
+	vehiculo = new Motocicleta();
+	vehiculo.setNoSerie(tfNoSerie.getText());
+	indice = crud.find(vehiculo);
+	if (indice == -1) {
+	    JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+	    vehiculo.setNoSerie(tfNoSerie.getText());
+	    vehiculo.setMarca(tfMarca.getText());
+	    vehiculo.setModelo(tfModelo.getText());
+	    vehiculo.setColor(tfColor.getText());
+	    ((Motocicleta) vehiculo).setPotencia(Float.parseFloat(tfPotencia.getText()));
+	    ((Motocicleta) vehiculo).setRodada(Byte.parseByte(tfRodada.getText()));
+	    crud.create(vehiculo);
+	} else {
+	    JOptionPane.showMessageDialog(null, "Motocicleta existente");
+	}
 
     }//GEN-LAST:event_bCrearMotocicletaActionPerformed
 
     private void tfDuracionBateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDuracionBateriaActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_tfDuracionBateriaActionPerformed
 
     private void bActualizarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarMotocicletaActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
+	vehiculo = new Motocicleta();
+	vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+	indice = crud.find(vehiculo);
+	if (indice >= 0) {
+	    JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+	    vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
+	    vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
+	    vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
+	    ((Motocicleta) vehiculo).setRodada(Byte.parseByte(JOptionPane.showInputDialog("Rodada: ")));
+	    ((Motocicleta) vehiculo).setPotencia(Float.parseFloat(JOptionPane.showInputDialog("Potencia: ")));
+	    crud.update(vehiculo);
+	} else {
+	    JOptionPane.showMessageDialog(null, "Automovil inexistente");
+	}
     }//GEN-LAST:event_bActualizarMotocicletaActionPerformed
 
     private void bActualizarAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarAutomovilActionPerformed
-        vehiculo = new Automovil();
-        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
-        indice = crud.find(vehiculo);
-        if (indice >= 0) {
-            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
-            vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
-            vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
-            vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
-            ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(JOptionPane.showInputDialog("Caballos de fuerza: ")));
-            ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(JOptionPane.showInputDialog("Número de puertas: ")));
-            crud.update(vehiculo);
-        } else {
-            JOptionPane.showMessageDialog(null, "Automovil inexistente");
-        }
+	vehiculo = new Automovil();
+	vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+	indice = crud.find(vehiculo);
+	if (indice >= 0) {
+	    JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+	    vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
+	    vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
+	    vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
+	    ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(JOptionPane.showInputDialog("Caballos de fuerza: ")));
+	    ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(JOptionPane.showInputDialog("Número de puertas: ")));
+	    crud.update(vehiculo);
+	} else {
+	    JOptionPane.showMessageDialog(null, "Automovil inexistente");
+	}
     }//GEN-LAST:event_bActualizarAutomovilActionPerformed
 
     private void bEliminarAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAutomovilActionPerformed
-        int op = 0;
-        vehiculo = new Automovil();
-        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
-        indice = crud.find(vehiculo);
-        if (indice >= 0) {
-            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
-            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
-            if (op == 0) {
-                crud.delete(vehiculo);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Automovil inexistente");
-        }
+	int op = 0;
+	vehiculo = new Automovil();
+	vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+	indice = crud.find(vehiculo);
+	if (indice >= 0) {
+	    JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+	    op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+	    if (op == 0) {
+		crud.delete(vehiculo);
+	    }
+	} else {
+	    JOptionPane.showMessageDialog(null, "Automovil inexistente");
+	}
     }//GEN-LAST:event_bEliminarAutomovilActionPerformed
 
     private void bEliminarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarMotocicletaActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
+	int op = 0;
+	vehiculo = new Motocicleta();
+	vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+	indice = crud.find(vehiculo);
+	if (indice >= 0) {
+	    JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+	    op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+	    if (op == 0) {
+		crud.delete(vehiculo);
+	    }
+	} else {
+	    JOptionPane.showMessageDialog(null, "Automovil inexistente");
+	}
     }//GEN-LAST:event_bEliminarMotocicletaActionPerformed
 
     private void bActualizarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarAutoElectricoActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_bActualizarAutoElectricoActionPerformed
 
     private void tfMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMarcaActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_tfMarcaActionPerformed
 
     private void cbTipoVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoVehiculoActionPerformed
-        bCrearAutomovil.setEnabled(true);
-        bCrearMotocicleta.setEnabled(true);
-        bCrearAutoElectrico.setEnabled(true);
-        switch (cbTipoVehiculo.getSelectedIndex()) {
-            case 0:
-                tbTipoVehiculo.setEnabledAt(0, true);
-                tfCaballosFuerza.setEnabled(true);
-                tfNoPuertas.setEnabled(true);
-                vehiculo = new Automovil();
-                break;
-            case 1:
-                tbTipoVehiculo.setEnabledAt(1, true);
-                tfPotencia.setEnabled(true);
-                tfRodada.setEnabled(true);
-                vehiculo = new Motocicleta();
-                break;
-            case 2:
-                tbTipoVehiculo.setEnabledAt(0, true);
-                tbTipoVehiculo.setEnabledAt(2, true);
-                tfCaballosFuerza.setEnabled(true);
-                tfNoPuertas.setEnabled(true);
-                tfDuracionBateria.setEnabled(true);
-                vehiculo = new AutoElectrico();
-                break;
-        }
+	bCrearAutomovil.setEnabled(true);
+	bCrearMotocicleta.setEnabled(true);
+	bCrearAutoElectrico.setEnabled(true);
+	switch (cbTipoVehiculo.getSelectedIndex()) {
+	    case 0:
+		tbTipoVehiculo.setEnabledAt(0, true);
+		tfCaballosFuerza.setEnabled(true);
+		tfNoPuertas.setEnabled(true);
+		vehiculo = new Automovil();
+		break;
+	    case 1:
+		tbTipoVehiculo.setEnabledAt(1, true);
+		tfPotencia.setEnabled(true);
+		tfRodada.setEnabled(true);
+		vehiculo = new Motocicleta();
+		break;
+	    case 2:
+		tbTipoVehiculo.setEnabledAt(0, true);
+		tbTipoVehiculo.setEnabledAt(2, true);
+		tfCaballosFuerza.setEnabled(true);
+		tfNoPuertas.setEnabled(true);
+		tfDuracionBateria.setEnabled(true);
+		vehiculo = new AutoElectrico();
+		break;
+	}
     }//GEN-LAST:event_cbTipoVehiculoActionPerformed
 
     private void bCrearAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutomovilActionPerformed
-        vehiculo = new Automovil();
-        indice = crud.find(vehiculo);
-        if (indice == -1) {
-            vehiculo.setNoSerie(tfNoSerie.getText());
-            vehiculo.setMarca(tfMarca.getText());
-            vehiculo.setModelo(tfModelo.getText());
-            vehiculo.setColor(tfColor.getText());
-            ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(tfCaballosFuerza.getText()));
-            ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(tfNoPuertas.getText()));
-            crud.create(vehiculo);
-        } else {
-            JOptionPane.showMessageDialog(null, "Automovil existente");
-        }
+	vehiculo = new Automovil();
+	indice = crud.find(vehiculo);
+	if (indice == -1) {
+	    vehiculo.setNoSerie(tfNoSerie.getText());
+	    vehiculo.setMarca(tfMarca.getText());
+	    vehiculo.setModelo(tfModelo.getText());
+	    vehiculo.setColor(tfColor.getText());
+	    ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(tfCaballosFuerza.getText()));
+	    ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(tfNoPuertas.getText()));
+	    crud.create(vehiculo);
+	} else {
+	    JOptionPane.showMessageDialog(null, "Automovil existente");
+	}
     }//GEN-LAST:event_bCrearAutomovilActionPerformed
 
     private void bConsultaAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultaAutomovilActionPerformed
-        jTextAreaToAutomovil.setText(crud.readAutomovil() + "\n" + ((Automovil) vehiculo).combustible());
+	jTextAreaToAutomovil.setText(crud.readAutomovil() + "\n" + ((Automovil) vehiculo).combustible());
     }//GEN-LAST:event_bConsultaAutomovilActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-        manejadorArchivo.escribirArchivo(crud.getGrupo(), crud.getIndice());
-        System.exit(0);
+	manejadorArchivo.escribirArchivo(crud.getGrupo(), crud.getIndice());
+	System.exit(0);
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void bConsultarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarMotocicletaActionPerformed
-        jTextAreaToMotocicleta.setText(crud.readMotocicleta() + "\n" + ((Motocicleta) vehiculo).combustible());
+	jTextAreaToMotocicleta.setText(crud.readMotocicleta() + "\n" + ((Motocicleta) vehiculo).combustible());
     }//GEN-LAST:event_bConsultarMotocicletaActionPerformed
 
     private void bConsultarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarAutoElectricoActionPerformed
-        jTextAreaToAutoElectrico.setText(crud.readAutoElectrico() + "\n" + ((AutoElectrico) vehiculo).combustible());
+	jTextAreaToAutoElectrico.setText(crud.readAutoElectrico() + "\n" + ((AutoElectrico) vehiculo).combustible());
     }//GEN-LAST:event_bConsultarAutoElectricoActionPerformed
 
     private void bCrearAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutoElectricoActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_bCrearAutoElectricoActionPerformed
 
     private void bEliminarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAutoElectricoActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_bEliminarAutoElectricoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+	/* Set the Nimbus look and feel */
+	//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+	/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+	 */
+	try {
+	    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+		if ("Nimbus".equals(info.getName())) {
+		    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+		    break;
 
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaAgencia.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		}
+	    }
+	} catch (ClassNotFoundException ex) {
+	    java.util.logging.Logger.getLogger(VistaAgencia.class
+		    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaAgencia.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	} catch (InstantiationException ex) {
+	    java.util.logging.Logger.getLogger(VistaAgencia.class
+		    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaAgencia.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	} catch (IllegalAccessException ex) {
+	    java.util.logging.Logger.getLogger(VistaAgencia.class
+		    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaAgencia.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+	} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+	    java.util.logging.Logger.getLogger(VistaAgencia.class
+		    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	}
+	//</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaAgencia().setVisible(true);
-            }
-        });
+	/* Create and display the form */
+	java.awt.EventQueue.invokeLater(new Runnable() {
+	    public void run() {
+		new VistaAgencia().setVisible(true);
+	    }
+	});
 
     }
 
