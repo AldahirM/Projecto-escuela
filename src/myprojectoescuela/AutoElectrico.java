@@ -4,12 +4,12 @@ public class AutoElectrico extends Automovil {
 
     private float duracionBateria;
 
-    public AutoElectrico(float duracionBateria, float caballosFuerza, float noPuertas, String noSerie, String marca, String modelo, String color) {
+    public AutoElectrico(float duracionBateria, float caballosFuerza, byte noPuertas, String noSerie, String marca, String modelo, String color) {
         super(caballosFuerza, noPuertas, noSerie, marca, modelo, color);
     }
 
     public AutoElectrico() {
-        this(1f, (float) 1, (float) 1, "SIN NÚMERO", "SIN MARCA", "SIN MODELO", "SIN COLOR");
+        this(1f, (float) 1, (byte) 1, "SIN NÚMERO", "SIN MARCA", "SIN MODELO", "SIN COLOR");
     }
 
     /**

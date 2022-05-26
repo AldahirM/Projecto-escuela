@@ -3,16 +3,16 @@ package myprojectoescuela;
 public class Automovil extends Vehiculo {
 
     private float caballosFuerza;
-    private float noPuertas;
+    private byte noPuertas;
 
-    public Automovil(float caballosFuerza, float noPuertas, String noSerie, String marca, String modelo, String color) {
+    public Automovil(float caballosFuerza, byte noPuertas, String noSerie, String marca, String modelo, String color) {
         super(noSerie, marca, modelo, color);
         setCaballosFuerza(caballosFuerza);
         setNoPuertas(noPuertas);
     }
 
     public Automovil() {
-        this((float) 1, (float) 1, "SIN NÚMERO", "SIN MARCA", "SIN MODELO", "SIN COLOR");
+        this((float) 1, (byte)1, "SIN NÚMERO", "SIN MARCA", "SIN MODELO", "SIN COLOR");
     }
 
     /**
@@ -39,7 +39,7 @@ public class Automovil extends Vehiculo {
     /**
      * @param noPuertas the noPuertas to set
      */
-    public void setNoPuertas(float noPuertas) {
+    public void setNoPuertas(byte noPuertas) {
         this.noPuertas = noPuertas > 0 ? this.noPuertas = noPuertas : 1;
     }
 

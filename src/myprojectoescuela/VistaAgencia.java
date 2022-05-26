@@ -79,7 +79,6 @@ public class VistaAgencia extends javax.swing.JFrame {
         tfColor = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cbTipoVehiculo = new javax.swing.JComboBox<>();
-        bBuscar = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -424,14 +423,6 @@ public class VistaAgencia extends javax.swing.JFrame {
             }
         });
 
-        bBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        bBuscar.setText("Buscar");
-        bBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bBuscarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -453,10 +444,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(tfNoSerie)
-                        .addGap(18, 18, 18)
-                        .addComponent(bBuscar)))
+                    .addComponent(tfNoSerie))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -469,8 +457,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tfNoSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bBuscar))
+                    .addComponent(tfNoSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -516,7 +503,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addComponent(tbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bSalir)
@@ -557,7 +544,20 @@ public class VistaAgencia extends javax.swing.JFrame {
     }//GEN-LAST:event_bActualizarMotocicletaActionPerformed
 
     private void bActualizarAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarAutomovilActionPerformed
-        // TODO add your handling code here:
+        vehiculo = new Automovil();
+        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+        indice = crud.find(vehiculo);
+        if (indice >= 0) {
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+            vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
+            vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
+            vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
+            ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(JOptionPane.showInputDialog("Caballos de fuerza: ")));
+            ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(JOptionPane.showInputDialog("Número de puertas: ")));
+            crud.update(vehiculo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Persona inexistente");
+        }
     }//GEN-LAST:event_bActualizarAutomovilActionPerformed
 
     private void bEliminarAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAutomovilActionPerformed
@@ -613,7 +613,7 @@ public class VistaAgencia extends javax.swing.JFrame {
             vehiculo.setModelo(tfModelo.getText());
             vehiculo.setColor(tfColor.getText());
             ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(tfCaballosFuerza.getText()));
-            ((Automovil) vehiculo).setNoPuertas(Float.parseFloat(tfNoPuertas.getText()));
+            ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(tfNoPuertas.getText()));
             crud.create(vehiculo);
         } else {
             JOptionPane.showMessageDialog(null, "Vehiculo existente");
@@ -636,16 +636,6 @@ public class VistaAgencia extends javax.swing.JFrame {
     private void bConsultarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarAutoElectricoActionPerformed
         jTextAreaToAutoElectrico.setText(crud.readAutoElectrico());
     }//GEN-LAST:event_bConsultarAutoElectricoActionPerformed
-
-    private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        vehiculo.setNoSerie(tfNoSerie.getText());
-        indice = crud.find(vehiculo);
-        if (indice >= 0) {
-            JOptionPane.showMessageDialog(null,crud.consultaInd(indice));
-        } else {
-            JOptionPane.showMessageDialog(null, "Persona inexistente");
-        }
-    }//GEN-LAST:event_bBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -695,7 +685,6 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JButton bActualizarAutoElectrico;
     private javax.swing.JButton bActualizarAutomovil;
     private javax.swing.JButton bActualizarMotocicleta;
-    private javax.swing.JButton bBuscar;
     private javax.swing.JButton bConsultaAutomovil;
     private javax.swing.JButton bConsultarAutoElectrico;
     private javax.swing.JButton bConsultarMotocicleta;
