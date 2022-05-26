@@ -561,7 +561,19 @@ public class VistaAgencia extends javax.swing.JFrame {
     }//GEN-LAST:event_bActualizarAutomovilActionPerformed
 
     private void bEliminarAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAutomovilActionPerformed
-        // TODO add your handling code here:
+        int op = 0;
+        vehiculo = new Automovil();
+        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+        indice = crud.find(vehiculo);
+        if (indice >= 0) {
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (op == 0) {
+                crud.delete(vehiculo);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Persona inexistente");
+        }
     }//GEN-LAST:event_bEliminarAutomovilActionPerformed
 
     private void bEliminarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarMotocicletaActionPerformed

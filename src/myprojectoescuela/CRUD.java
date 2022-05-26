@@ -110,7 +110,7 @@ public class CRUD {
     }
 
     public Vehiculo consultaInd(int ind) {
-        if (ind > 0 && ind < indice) {
+        if (ind > -1 && ind < indice) {
             return grupo[ind];
         }
         return null;
