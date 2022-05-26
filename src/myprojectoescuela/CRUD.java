@@ -57,7 +57,7 @@ public class CRUD {
         String cadena = "";
         for (int i = 0; i < indice; i++) {
             if (grupo[i] instanceof Automovil) {
-                cadena += grupo[i].toString() + "\n";
+                cadena += grupo[i].toString() + grupo[i].costoVehiculo() + "\n";
             }
         }
         return cadena;
@@ -67,7 +67,7 @@ public class CRUD {
         String cadena = "";
         for (int i = 0; i < indice; i++) {
             if (grupo[i] instanceof Motocicleta) {
-                cadena += grupo[i].toString() + "\n";
+                cadena += grupo[i].toString() + grupo[i].costoVehiculo() + "\n";
             }
         }
         return cadena;
@@ -77,7 +77,7 @@ public class CRUD {
         String cadena = "";
         for (int i = 0; i < indice; i++) {
             if (grupo[i] instanceof AutoElectrico) {
-                cadena += grupo[i].toString() + "\n";
+                cadena += grupo[i].toString() + grupo[i].costoVehiculo() + "\n";
             }
         }
         return cadena;

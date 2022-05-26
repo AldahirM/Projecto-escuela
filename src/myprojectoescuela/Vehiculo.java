@@ -8,7 +8,7 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     private String marca;
     private String modelo;
     private String color;
-
+    
     public Vehiculo(String noSerie, String marca, String modelo, String color) {
         setNoSerie(noSerie);
         setMarca(marca);

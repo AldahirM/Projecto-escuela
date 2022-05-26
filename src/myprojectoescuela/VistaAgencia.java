@@ -643,7 +643,7 @@ public class VistaAgencia extends javax.swing.JFrame {
     }//GEN-LAST:event_bCrearAutomovilActionPerformed
 
     private void bConsultaAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultaAutomovilActionPerformed
-        jTextAreaToAutomovil.setText(crud.readAutomovil());
+        jTextAreaToAutomovil.setText(crud.readAutomovil() + "\n" + ((Automovil) vehiculo).combustible());
     }//GEN-LAST:event_bConsultaAutomovilActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
@@ -652,11 +652,11 @@ public class VistaAgencia extends javax.swing.JFrame {
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void bConsultarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarMotocicletaActionPerformed
-        jTextAreaToMotocicleta.setText(crud.readMotocicleta());
+        jTextAreaToMotocicleta.setText(crud.readMotocicleta() + "\n" + ((Motocicleta) vehiculo).combustible());
     }//GEN-LAST:event_bConsultarMotocicletaActionPerformed
 
     private void bConsultarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarAutoElectricoActionPerformed
-        jTextAreaToAutoElectrico.setText(crud.readAutoElectrico());
+        jTextAreaToAutoElectrico.setText(crud.readAutoElectrico() + "\n" + ((AutoElectrico) vehiculo).combustible());
     }//GEN-LAST:event_bConsultarAutoElectricoActionPerformed
 
     private void bCrearAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutoElectricoActionPerformed

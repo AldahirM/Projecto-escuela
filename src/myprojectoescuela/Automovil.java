@@ -58,7 +58,7 @@ public class Automovil extends Vehiculo {
     @Override
     public String combustible() {
 
-        return "Gasolina de 92 octanos";
+        return "Combustible recomendado: Gasolina de 92 octanos";
         
     }
 
