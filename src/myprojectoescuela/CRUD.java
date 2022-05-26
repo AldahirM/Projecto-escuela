@@ -63,6 +63,26 @@ public class CRUD {
         return cadena;
     }
 
+    public String readMotocicleta() {
+        String cadena = "";
+        for (int i = 0; i < indice; i++) {
+            if (grupo[i] instanceof Motocicleta) {
+                cadena += grupo[i].toString() + "\n";
+            }
+        }
+        return cadena;
+    }
+
+    public String readAutoElectrico() {
+        String cadena = "";
+        for (int i = 0; i < indice; i++) {
+            if (grupo[i] instanceof AutoElectrico) {
+                cadena += grupo[i].toString() + "\n";
+            }
+        }
+        return cadena;
+    }
+
     public int find(Vehiculo vehiculo) {
         for (int i = 0; i < indice; i++) {
             if (grupo[i].compareTo(vehiculo) == 0) {
@@ -95,4 +115,5 @@ public class CRUD {
         }
         return null;
     }
+
 }
