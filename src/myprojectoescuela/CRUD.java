@@ -76,7 +76,7 @@ public class CRUD {
     public String readAutoElectrico() {
         String cadena = "";
         for (int i = 0; i < indice; i++) {
-            if (grupo[i] instanceof AutoElectrico) {
+            if (grupo[i] instanceof AutoElectrico && !(grupo[i] instanceof Automovil)) {
                 cadena += grupo[i].toString() + grupo[i].costoVehiculo() + "\n";
             }
         }

@@ -23,7 +23,7 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     public abstract double costoVehiculo();
 
     public abstract String combustible();
-
+    
     /**
      * @return the noSerie
      */
@@ -84,7 +84,7 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     public String toString() {
         return "noSerie:" + noSerie + ", marca:" + marca + ", modelo:" + modelo + ", color:" + color;
     }
-
+    
     @Override
     public int compareTo(Vehiculo o) {
         return noSerie.toUpperCase().compareTo(o.getNoSerie().toUpperCase());
