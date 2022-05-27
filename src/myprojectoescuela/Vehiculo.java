@@ -7,22 +7,23 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     private String noSerie;
     private String marca;
     private String modelo;
+    private short anioModelo;
     private String color;
-    private float precioVehiculo;
-    
-    public Vehiculo(String noSerie, String marca, String modelo, String color) {
+
+    public Vehiculo(String noSerie, String marca, String modelo,short anioModelo, String color) {
 	setNoSerie(noSerie);
 	setMarca(marca);
 	setModelo(modelo);
+	setAnioModelo(anioModelo);
 	setColor(color);
     }
 
     public Vehiculo() {
-	this("SIN NÚMERO", "SIN MARCA", "SIN MODELO", "SIN COLOR");
+	this("SIN NÚMERO", "SIN MARCA", "SIN MODELO",(short)1981, "SIN COLOR");
     }
 
     public abstract double costoVehiculo();
-    
+
     public abstract String combustible();
 
     /**
@@ -82,19 +83,19 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     }
 
     /**
-     * @return the precioVehiculo
+     * @return the anioModelo
      */
-    public float getPrecioVehiculo() {
-	return precioVehiculo;
+    public short getAnioModelo() {
+	return anioModelo;
     }
 
     /**
-     * @param precioVehiculo the precioVehiculo to set
+     * @param anioModelo the anioModelo to set
      */
-    public void setPrecioVehiculo(float precioVehiculo) {
-	this.precioVehiculo = precioVehiculo > 0 ? precioVehiculo : 1;
+    public void setAnioModelo(short anioModelo) {
+	this.anioModelo = anioModelo > 1980 ? anioModelo : 1981;
     }
-    
+
     @Override
     public String toString() {
 	return "noSerie:" + noSerie + ", marca:" + marca + ", modelo:" + modelo + ", color:" + color;

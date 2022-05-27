@@ -5,14 +5,14 @@ public class Automovil extends Vehiculo {
     private float caballosFuerza;
     private byte noPuertas;
 
-    public Automovil(float caballosFuerza, byte noPuertas, String noSerie, String marca, String modelo, String color) {
-        super(noSerie, marca, modelo, color);
+    public Automovil(float caballosFuerza, byte noPuertas, String noSerie, String marca, String modelo,short anioModelo, String color) {
+        super(noSerie, marca, modelo,anioModelo, color);
         setCaballosFuerza(caballosFuerza);
         setNoPuertas(noPuertas);
     }
 
     public Automovil() {
-        this((float) 1, (byte)1, "SIN NÚMERO", "SIN MARCA", "SIN MODELO", "SIN COLOR");
+        this((float) 1, (byte)1,"SIN NÚMERO", "SIN MARCA", "SIN MODELO",(short)1981, "SIN COLOR");
     }
 
     /**
