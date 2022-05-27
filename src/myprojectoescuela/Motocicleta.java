@@ -51,7 +51,7 @@ public class Motocicleta extends Vehiculo {
 
     @Override
     public double costoVehiculo() {
-
+		
         return 0;
     }
 

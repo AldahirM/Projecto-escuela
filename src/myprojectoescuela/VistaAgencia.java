@@ -33,7 +33,6 @@ public class VistaAgencia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        motocicleta1 = new myprojectoescuela.Motocicleta();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tbTipoVehiculo = new javax.swing.JTabbedPane();
@@ -79,6 +78,8 @@ public class VistaAgencia extends javax.swing.JFrame {
         tfColor = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cbTipoVehiculo = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        tfPrecioVehiculo = new javax.swing.JTextField();
         bSalir = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -97,7 +98,6 @@ public class VistaAgencia extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 255, 204));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Agencia");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -273,7 +273,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                                 .addComponent(bEliminarMotocicleta)
                                 .addGap(18, 18, 18)
                                 .addComponent(bConsultarMotocicleta)
-                                .addGap(0, 41, Short.MAX_VALUE))
+                                .addGap(0, 64, Short.MAX_VALUE))
                             .addComponent(tfRodada)
                             .addComponent(tfPotencia))))
                 .addContainerGap())
@@ -364,7 +364,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                         .addComponent(bEliminarAutoElectrico)
                         .addGap(18, 18, 18)
                         .addComponent(bConsultarAutoElectrico)
-                        .addGap(0, 44, Short.MAX_VALUE))
+                        .addGap(0, 68, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -394,19 +394,15 @@ public class VistaAgencia extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Número de serie:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Marca del vehiculo:");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Modelo:");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Color:");
 
         tfNoSerie.addActionListener(new java.awt.event.ActionListener() {
@@ -422,7 +418,6 @@ public class VistaAgencia extends javax.swing.JFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Tipo de vehiculo:");
 
         cbTipoVehiculo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -433,17 +428,21 @@ public class VistaAgencia extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel12.setText("Precio del vehiculo:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfMarca)
@@ -454,7 +453,8 @@ public class VistaAgencia extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tfNoSerie))
+                    .addComponent(tfNoSerie)
+                    .addComponent(tfPrecioVehiculo))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -480,7 +480,11 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tfColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(tfPrecioVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
 
         bSalir.setText("Salir");
@@ -800,6 +804,7 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -820,7 +825,6 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaToAutoElectrico;
     private javax.swing.JTextArea jTextAreaToAutomovil;
     private javax.swing.JTextArea jTextAreaToMotocicleta;
-    private myprojectoescuela.Motocicleta motocicleta1;
     private javax.swing.JTabbedPane tbTipoVehiculo;
     private javax.swing.JTextField tfCaballosFuerza;
     private javax.swing.JTextField tfColor;
@@ -830,6 +834,7 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JTextField tfNoPuertas;
     private javax.swing.JTextField tfNoSerie;
     private javax.swing.JTextField tfPotencia;
+    private javax.swing.JTextField tfPrecioVehiculo;
     private javax.swing.JTextField tfRodada;
     // End of variables declaration//GEN-END:variables
 
