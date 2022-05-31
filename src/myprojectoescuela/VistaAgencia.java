@@ -82,7 +82,7 @@ public class VistaAgencia extends javax.swing.JFrame {
         tfColor = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cbTipoVehiculo = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        tfAnioModelo = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         bSalir = new javax.swing.JButton();
 
@@ -484,7 +484,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tfNoSerie)
-                    .addComponent(jTextField1)
+                    .addComponent(tfAnioModelo)
                     .addComponent(tfColor))
                 .addContainerGap())
         );
@@ -509,7 +509,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                     .addComponent(tfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfAnioModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -570,6 +570,7 @@ public class VistaAgencia extends javax.swing.JFrame {
             vehiculo.setNoSerie(tfNoSerie.getText());
             vehiculo.setMarca(tfMarca.getText());
             vehiculo.setModelo(tfModelo.getText());
+            vehiculo.setAnioModelo(Short.parseShort(tfAnioModelo.getText()));
             vehiculo.setColor(tfColor.getText());
             ((Motocicleta) vehiculo).setPotencia(Float.parseFloat(tfPotencia.getText()));
             ((Motocicleta) vehiculo).setRodada(Byte.parseByte(tfRodada.getText()));
@@ -613,6 +614,7 @@ public class VistaAgencia extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
             vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
             vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
+            vehiculo.setAnioModelo(Short.parseShort(JOptionPane.showInputDialog("Nuevo año del modelo: ")));
             vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
             ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(JOptionPane.showInputDialog("Caballos de fuerza: ")));
             ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(JOptionPane.showInputDialog("Número de puertas: ")));
@@ -664,6 +666,7 @@ public class VistaAgencia extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
             vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
             vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
+            vehiculo.setAnioModelo(Short.parseShort(JOptionPane.showInputDialog("Nuevo año del modelo: ")));
             vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
             ((AutoElectrico) vehiculo).setCaballosFuerza(Float.parseFloat(JOptionPane.showInputDialog("Caballos de fuerza: ")));
             ((AutoElectrico) vehiculo).setNoPuertas(Byte.parseByte(JOptionPane.showInputDialog("Número de puertas: ")));
@@ -712,6 +715,7 @@ public class VistaAgencia extends javax.swing.JFrame {
             vehiculo.setNoSerie(tfNoSerie.getText());
             vehiculo.setMarca(tfMarca.getText());
             vehiculo.setModelo(tfModelo.getText());
+            vehiculo.setAnioModelo(Short.parseShort(tfAnioModelo.getText()));
             vehiculo.setColor(tfColor.getText());
             ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(tfCaballosFuerza.getText()));
             ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(tfNoPuertas.getText()));
@@ -749,6 +753,7 @@ public class VistaAgencia extends javax.swing.JFrame {
             vehiculo.setNoSerie(tfNoSerie.getText());
             vehiculo.setMarca(tfMarca.getText());
             vehiculo.setModelo(tfModelo.getText());
+            vehiculo.setAnioModelo(Short.parseShort(tfAnioModelo.getText()));
             vehiculo.setColor(tfColor.getText());
             ((AutoElectrico) vehiculo).setCaballosFuerza(Float.parseFloat(tfCaballosFuerza_AutoElectrico.getText()));
             ((AutoElectrico) vehiculo).setNoPuertas(Byte.parseByte(tfNoPuerta_AutoElectrico.getText()));
@@ -863,8 +868,8 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaToAutoElectrico;
     private javax.swing.JTextArea jTextAreaToAutomovil;
     private javax.swing.JTextArea jTextAreaToMotocicleta;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTabbedPane tbTipoVehiculo;
+    private javax.swing.JTextField tfAnioModelo;
     private javax.swing.JTextField tfCaballosFuerza;
     private javax.swing.JTextField tfCaballosFuerza_AutoElectrico;
     private javax.swing.JTextField tfColor;
