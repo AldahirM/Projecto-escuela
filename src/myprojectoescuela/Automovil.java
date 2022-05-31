@@ -5,14 +5,14 @@ public class Automovil extends Vehiculo {
     private float caballosFuerza;
     private byte noPuertas;
 
-    public Automovil(float caballosFuerza, byte noPuertas, String noSerie, String marca, String modelo,short anioModelo, String color) {
-        super(noSerie, marca, modelo,anioModelo, color);
+    public Automovil(float caballosFuerza, byte noPuertas, String noSerie, String marca, String modelo, short anioModelo, String color) {
+        super(noSerie, marca, modelo, anioModelo, color);
         setCaballosFuerza(caballosFuerza);
         setNoPuertas(noPuertas);
     }
 
     public Automovil() {
-        this((float) 1, (byte)1,"SIN NÚMERO", "SIN MARCA", "SIN MODELO",(short)1981, "SIN COLOR");
+        this((float) 1, (byte) 1, "SIN NÚMERO", "SIN MARCA", "SIN MODELO", (short) 1981, "SIN COLOR");
     }
 
     /**
@@ -51,15 +51,20 @@ public class Automovil extends Vehiculo {
 
     @Override
     public double costoVehiculo() {
-
-        return 0;
+        double costo = 80000;
+        if (getNoPuertas() > 4 && getCaballosFuerza() > 110) {
+            double costoTotal = (costo * 2) + (getCaballosFuerza() * 50);
+            return costoTotal;
+        }
+        double costoTotal = (costo) + (getCaballosFuerza() * 50);
+        return costoTotal;
     }
-    
+
     @Override
     public String combustible() {
 
         return "Combustible recomendado: Gasolina de 92 octanos";
-        
+
     }
 
 }
