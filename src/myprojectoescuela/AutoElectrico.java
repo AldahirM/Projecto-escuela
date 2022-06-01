@@ -4,7 +4,8 @@ public class AutoElectrico extends Automovil {
 
     private float duracionBateria;
 
-    public AutoElectrico(float duracionBateria, float caballosFuerza, byte noPuertas, String noSerie, String marca, String modelo, short anioModelo, String color) {
+    public AutoElectrico(float duracionBateria, float caballosFuerza,
+            byte noPuertas, String noSerie, String marca, String modelo, short anioModelo, String color) {
         super(caballosFuerza, noPuertas, noSerie, marca, modelo, anioModelo, color);
     }
 
@@ -47,7 +48,7 @@ public class AutoElectrico extends Automovil {
 
     @Override
     public String combustible() {
-        String combustible = "Combustible recomendado: Corriente recomendada de 220 V a 230 V.";
+        String combustible = "Combustible recomendado: Corriente electrica recomendada de 220 V a 230 V.";
         return combustible;
 
     }

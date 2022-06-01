@@ -779,7 +779,7 @@ public class VistaAgencia extends javax.swing.JFrame {
                 crud.delete(vehiculo);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Vehiculo existente");
+            JOptionPane.showMessageDialog(null, "Vehiculo inexistente");
         }
     }//GEN-LAST:event_bEliminarAutoElectricoActionPerformed
 
