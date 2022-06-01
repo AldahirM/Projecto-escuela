@@ -631,7 +631,7 @@ public class VistaAgencia extends javax.swing.JFrame {
         indice = crud.find(vehiculo);
         if (indice >= 0) {
             JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
-            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
             if (op == 0) {
                 crud.delete(vehiculo);
             }
@@ -648,7 +648,7 @@ public class VistaAgencia extends javax.swing.JFrame {
         indice = crud.find(vehiculo);
         if (indice >= 0) {
             JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
-            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
             if (op == 0) {
                 crud.delete(vehiculo);
             }
@@ -774,7 +774,7 @@ public class VistaAgencia extends javax.swing.JFrame {
         indice = crud.find(vehiculo);
         if (indice >= 0) {
             JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
-            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
             if (op == 0) {
                 crud.delete(vehiculo);
             }
