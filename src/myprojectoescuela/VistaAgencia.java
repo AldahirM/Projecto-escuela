@@ -4,15 +4,23 @@ import javax.swing.JOptionPane;
 
 public class VistaAgencia extends javax.swing.JFrame {
 
+    private Vehiculo vehiculo;
+    private ManejadorArchivo manejadorArchivo = new ManejadorArchivo();
+    private CRUD crud = new CRUD();
+    private int indice = 0;
+
     /**
      * Creates new form VistaAgencia
      */
     public VistaAgencia() {
         initComponents();
+
         tbTipoVehiculo.setEnabledAt(0, false);
         tbTipoVehiculo.setEnabledAt(1, false);
         tbTipoVehiculo.setEnabledAt(2, false);
 
+        indice = manejadorArchivo.leerArchivo(crud.getGrupo());
+        crud.setIndice(indice);
     }
 
     /**
@@ -25,7 +33,6 @@ public class VistaAgencia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        motocicleta1 = new myprojectoescuela.Motocicleta();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tbTipoVehiculo = new javax.swing.JTabbedPane();
@@ -50,6 +57,7 @@ public class VistaAgencia extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         tfPotencia = new javax.swing.JTextField();
         tfRodada = new javax.swing.JTextField();
+        bConsultarMotocicleta = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaToAutoElectrico = new javax.swing.JTextArea();
@@ -58,6 +66,11 @@ public class VistaAgencia extends javax.swing.JFrame {
         bEliminarAutoElectrico = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         tfDuracionBateria = new javax.swing.JTextField();
+        bConsultarAutoElectrico = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        tfCaballosFuerza_AutoElectrico = new javax.swing.JTextField();
+        tfNoPuerta_AutoElectrico = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -69,6 +82,9 @@ public class VistaAgencia extends javax.swing.JFrame {
         tfColor = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cbTipoVehiculo = new javax.swing.JComboBox<>();
+        tfAnioModelo = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        bSalir = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -81,7 +97,7 @@ public class VistaAgencia extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 204));
 
@@ -139,6 +155,11 @@ public class VistaAgencia extends javax.swing.JFrame {
 
         bConsultaAutomovil.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bConsultaAutomovil.setText("Consulta");
+        bConsultaAutomovil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultaAutomovilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -149,12 +170,8 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfNoPuertas))
+                        .addGap(0, 26, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(bCrearAutomovil)
                                 .addGap(20, 20, 20)
@@ -164,9 +181,13 @@ public class VistaAgencia extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(bConsultaAutomovil))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfCaballosFuerza, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfNoPuertas)
+                                    .addComponent(tfCaballosFuerza, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -227,6 +248,14 @@ public class VistaAgencia extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("Rodada:");
 
+        bConsultarMotocicleta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bConsultarMotocicleta.setText("Consultar");
+        bConsultarMotocicleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultarMotocicletaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -247,7 +276,9 @@ public class VistaAgencia extends javax.swing.JFrame {
                                 .addComponent(bActualizarMotocicleta)
                                 .addGap(18, 18, 18)
                                 .addComponent(bEliminarMotocicleta)
-                                .addGap(0, 149, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(bConsultarMotocicleta)
+                                .addGap(0, 64, Short.MAX_VALUE))
                             .addComponent(tfRodada)
                             .addComponent(tfPotencia))))
                 .addContainerGap())
@@ -267,7 +298,8 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bActualizarMotocicleta)
                     .addComponent(bEliminarMotocicleta)
-                    .addComponent(bCrearMotocicleta))
+                    .addComponent(bCrearMotocicleta)
+                    .addComponent(bConsultarMotocicleta))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -276,11 +308,17 @@ public class VistaAgencia extends javax.swing.JFrame {
         tbTipoVehiculo.addTab("Motocicleta", jPanel5);
 
         jTextAreaToAutoElectrico.setColumns(20);
+        jTextAreaToAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextAreaToAutoElectrico.setRows(5);
         jScrollPane3.setViewportView(jTextAreaToAutoElectrico);
 
         bCrearAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bCrearAutoElectrico.setText("Crear");
+        bCrearAutoElectrico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCrearAutoElectricoActionPerformed(evt);
+            }
+        });
 
         bActualizarAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bActualizarAutoElectrico.setText("Actualizar");
@@ -292,15 +330,34 @@ public class VistaAgencia extends javax.swing.JFrame {
 
         bEliminarAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bEliminarAutoElectrico.setText("Eliminar");
+        bEliminarAutoElectrico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarAutoElectricoActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel10.setText("Duración de la bateria:");
+        jLabel10.setText("Duración de la bateria (Km):");
 
         tfDuracionBateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfDuracionBateriaActionPerformed(evt);
             }
         });
+
+        bConsultarAutoElectrico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bConsultarAutoElectrico.setText("Consultar");
+        bConsultarAutoElectrico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultarAutoElectricoActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel13.setText("Número de puertas:");
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel14.setText("Caballos de fuerza:");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -316,11 +373,19 @@ public class VistaAgencia extends javax.swing.JFrame {
                         .addComponent(bActualizarAutoElectrico)
                         .addGap(18, 18, 18)
                         .addComponent(bEliminarAutoElectrico)
-                        .addGap(0, 152, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(bConsultarAutoElectrico)
+                        .addGap(0, 68, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDuracionBateria)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfCaballosFuerza_AutoElectrico)
+                            .addComponent(tfDuracionBateria)
+                            .addComponent(tfNoPuerta_AutoElectrico))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -328,15 +393,24 @@ public class VistaAgencia extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(tfCaballosFuerza_AutoElectrico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNoPuerta_AutoElectrico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(tfDuracionBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCrearAutoElectrico)
                     .addComponent(bActualizarAutoElectrico)
-                    .addComponent(bEliminarAutoElectrico))
+                    .addComponent(bEliminarAutoElectrico)
+                    .addComponent(bConsultarAutoElectrico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -384,28 +458,34 @@ public class VistaAgencia extends javax.swing.JFrame {
             }
         });
 
+        jLabel15.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Año del vehiculo:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel15))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfNoSerie)
                     .addComponent(tfMarca)
                     .addComponent(tfModelo)
-                    .addComponent(tfColor)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNoSerie)
+                    .addComponent(tfAnioModelo)
+                    .addComponent(tfColor))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -429,10 +509,21 @@ public class VistaAgencia extends javax.swing.JFrame {
                     .addComponent(tfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(tfColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64))
+                    .addComponent(tfAnioModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(53, 53, 53))
         );
+
+        bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -445,6 +536,10 @@ public class VistaAgencia extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tbTipoVehiculo))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bSalir)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,9 +548,11 @@ public class VistaAgencia extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addComponent(tbTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(bSalir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -466,7 +563,23 @@ public class VistaAgencia extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNoSerieActionPerformed
 
     private void bCrearMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearMotocicletaActionPerformed
-        // TODO add your handling code here:
+        vehiculo = new Motocicleta();
+        vehiculo.setNoSerie(tfNoSerie.getText());
+        indice = crud.find(vehiculo);
+        if (indice == -1) {
+            vehiculo.setNoSerie(tfNoSerie.getText());
+            vehiculo.setMarca(tfMarca.getText());
+            vehiculo.setModelo(tfModelo.getText());
+            vehiculo.setAnioModelo(Short.parseShort(tfAnioModelo.getText()));
+            vehiculo.setColor(tfColor.getText());
+            ((Motocicleta) vehiculo).setPotencia(Float.parseFloat(tfPotencia.getText()));
+            ((Motocicleta) vehiculo).setRodada(Byte.parseByte(tfRodada.getText()));
+            crud.create(vehiculo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehiculo existente");
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+        }
+        jTextAreaToMotocicleta.setText(crud.readMotocicleta() + "\n" + ((Motocicleta) vehiculo).combustible());
     }//GEN-LAST:event_bCrearMotocicletaActionPerformed
 
     private void tfDuracionBateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDuracionBateriaActionPerformed
@@ -475,22 +588,93 @@ public class VistaAgencia extends javax.swing.JFrame {
 
     private void bActualizarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarMotocicletaActionPerformed
         // TODO add your handling code here:
+        vehiculo = new Motocicleta();
+        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+        indice = crud.find(vehiculo);
+        if (indice >= 0) {
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+            vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
+            vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
+            vehiculo.setAnioModelo(Short.parseShort(JOptionPane.showInputDialog("Nuevo año del modelo: ")));
+            vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
+            ((Motocicleta) vehiculo).setRodada(Byte.parseByte(JOptionPane.showInputDialog("Nueva Rodada: ")));
+            ((Motocicleta) vehiculo).setPotencia(Float.parseFloat(JOptionPane.showInputDialog("Nueva Potencia: ")));
+            jTextAreaToMotocicleta.setText(crud.readMotocicleta() + "\n" + ((Motocicleta) vehiculo).combustible());
+            crud.update(vehiculo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehiculo inexistente");
+        }
     }//GEN-LAST:event_bActualizarMotocicletaActionPerformed
 
     private void bActualizarAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarAutomovilActionPerformed
-        // TODO add your handling code here:
+        vehiculo = new Automovil();
+        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+        indice = crud.find(vehiculo);
+        if (indice >= 0) {
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+            vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
+            vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
+            vehiculo.setAnioModelo(Short.parseShort(JOptionPane.showInputDialog("Nuevo año del modelo: ")));
+            vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
+            ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(JOptionPane.showInputDialog("Caballos de fuerza: ")));
+            ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(JOptionPane.showInputDialog("Número de puertas: ")));
+            crud.update(vehiculo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehiculo inexistente");
+        }
     }//GEN-LAST:event_bActualizarAutomovilActionPerformed
 
     private void bEliminarAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAutomovilActionPerformed
-        // TODO add your handling code here:
+        int op = 0;
+        vehiculo = new Automovil();
+        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+        indice = crud.find(vehiculo);
+        if (indice >= 0) {
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (op == 0) {
+                crud.delete(vehiculo);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehiculo inexistente");
+        }
     }//GEN-LAST:event_bEliminarAutomovilActionPerformed
 
     private void bEliminarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarMotocicletaActionPerformed
         // TODO add your handling code here:
+        int op = 0;
+        vehiculo = new Motocicleta();
+        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+        indice = crud.find(vehiculo);
+        if (indice >= 0) {
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (op == 0) {
+                crud.delete(vehiculo);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehiculo inexistente");
+        }
     }//GEN-LAST:event_bEliminarMotocicletaActionPerformed
 
     private void bActualizarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarAutoElectricoActionPerformed
         // TODO add your handling code here:
+        vehiculo = new AutoElectrico();
+        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+        indice = crud.find(vehiculo);
+        if (indice >= 0) {
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+            vehiculo.setMarca(JOptionPane.showInputDialog("Nueva marca: "));
+            vehiculo.setModelo(JOptionPane.showInputDialog("Nuevo modelo: "));
+            vehiculo.setAnioModelo(Short.parseShort(JOptionPane.showInputDialog("Nuevo año del modelo: ")));
+            vehiculo.setColor(JOptionPane.showInputDialog("Nuevo color: "));
+            ((AutoElectrico) vehiculo).setCaballosFuerza(Float.parseFloat(JOptionPane.showInputDialog("Caballos de fuerza: ")));
+            ((AutoElectrico) vehiculo).setNoPuertas(Byte.parseByte(JOptionPane.showInputDialog("Número de puertas: ")));
+            ((AutoElectrico) vehiculo).setDuracionBateria(Float.parseFloat(JOptionPane.showInputDialog("Duracion de la bateria: ")));
+            crud.update(vehiculo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehiculo inexistente");
+        }
     }//GEN-LAST:event_bActualizarAutoElectricoActionPerformed
 
     private void tfMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMarcaActionPerformed
@@ -515,7 +699,6 @@ public class VistaAgencia extends javax.swing.JFrame {
                 vehiculo = new Motocicleta();
                 break;
             case 2:
-                tbTipoVehiculo.setEnabledAt(0, true);
                 tbTipoVehiculo.setEnabledAt(2, true);
                 tfCaballosFuerza.setEnabled(true);
                 tfNoPuertas.setEnabled(true);
@@ -526,38 +709,84 @@ public class VistaAgencia extends javax.swing.JFrame {
     }//GEN-LAST:event_cbTipoVehiculoActionPerformed
 
     private void bCrearAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutomovilActionPerformed
-        Automovil automovil = new Automovil();
-        CRUD crud = new CRUD();
-        int indice = 0;
-        ((Automovil) vehiculo).setNoSerie(tfMarca.getText());
+        vehiculo = new Automovil();
         indice = crud.find(vehiculo);
         if (indice == -1) {
-            ((Automovil) vehiculo).setMarca(tfMarca.getText());
-            ((Automovil) vehiculo).setModelo(tfModelo.getText());
-            ((Automovil) vehiculo).setColor(tfColor.getText().charAt(0));
-            automovil.setCaballosFuerza(Float.parseFloat(tfCaballosFuerza.getText()));
-            automovil.setNoPuertas(Float.parseFloat(tfNoPuertas.getText()));
+            vehiculo.setNoSerie(tfNoSerie.getText());
+            vehiculo.setMarca(tfMarca.getText());
+            vehiculo.setModelo(tfModelo.getText());
+            vehiculo.setAnioModelo(Short.parseShort(tfAnioModelo.getText()));
+            vehiculo.setColor(tfColor.getText());
+            ((Automovil) vehiculo).setCaballosFuerza(Float.parseFloat(tfCaballosFuerza.getText()));
+            ((Automovil) vehiculo).setNoPuertas(Byte.parseByte(tfNoPuertas.getText()));
             crud.create(vehiculo);
         } else {
-            JOptionPane.showMessageDialog(null, "Persona existente");
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
         }
+        jTextAreaToAutomovil.setText(crud.readAutomovil() + "\n" + ((Automovil) vehiculo).combustible());
     }//GEN-LAST:event_bCrearAutomovilActionPerformed
+
+    private void bConsultaAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultaAutomovilActionPerformed
+        jTextAreaToAutomovil.setText(crud.readAutomovil() + "\n" + ((Automovil) vehiculo).combustible());
+    }//GEN-LAST:event_bConsultaAutomovilActionPerformed
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        manejadorArchivo.escribirArchivo(crud.getGrupo(), crud.getIndice());
+        System.exit(0);
+    }//GEN-LAST:event_bSalirActionPerformed
+
+    private void bConsultarMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarMotocicletaActionPerformed
+        jTextAreaToMotocicleta.setText(crud.readMotocicleta() + "\n" + ((Motocicleta) vehiculo).combustible());
+    }//GEN-LAST:event_bConsultarMotocicletaActionPerformed
+
+    private void bConsultarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarAutoElectricoActionPerformed
+        jTextAreaToAutoElectrico.setText(crud.readAutoElectrico() + "\n" + ((AutoElectrico) vehiculo).combustible());
+    }//GEN-LAST:event_bConsultarAutoElectricoActionPerformed
+
+    private void bCrearAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAutoElectricoActionPerformed
+        // TODO add your handling code here:
+        vehiculo = new AutoElectrico();
+        vehiculo.setNoSerie(tfNoSerie.getText());
+        indice = crud.find(vehiculo);
+        if (indice == -1) {
+            vehiculo.setNoSerie(tfNoSerie.getText());
+            vehiculo.setMarca(tfMarca.getText());
+            vehiculo.setModelo(tfModelo.getText());
+            vehiculo.setAnioModelo(Short.parseShort(tfAnioModelo.getText()));
+            vehiculo.setColor(tfColor.getText());
+            ((AutoElectrico) vehiculo).setCaballosFuerza(Float.parseFloat(tfCaballosFuerza_AutoElectrico.getText()));
+            ((AutoElectrico) vehiculo).setNoPuertas(Byte.parseByte(tfNoPuerta_AutoElectrico.getText()));
+            ((AutoElectrico) vehiculo).setDuracionBateria(Float.parseFloat(tfDuracionBateria.getText()));
+            crud.create(vehiculo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehiculo existente");
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+        }
+        jTextAreaToAutoElectrico.setText(crud.readAutoElectrico() + "\n" + ((AutoElectrico) vehiculo).combustible());
+    }//GEN-LAST:event_bCrearAutoElectricoActionPerformed
+
+    private void bEliminarAutoElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAutoElectricoActionPerformed
+        // TODO add your handling code here:
+        int op = 0;
+        vehiculo = new AutoElectrico();
+        vehiculo.setNoSerie(JOptionPane.showInputDialog("Número de serie: "));
+        indice = crud.find(vehiculo);
+        if (indice >= 0) {
+            JOptionPane.showMessageDialog(null, crud.consultaInd(indice));
+            op = JOptionPane.showConfirmDialog(null, "¿Está seguro de elimnar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (op == 0) {
+                crud.delete(vehiculo);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehiculo inexistente");
+        }
+    }//GEN-LAST:event_bEliminarAutoElectricoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        //declaran variables
-        Vehiculo vehiculo;
-        ManejadorArchivo manejadorArchivo = new ManejadorArchivo();
-        CRUD crud = new CRUD();
-        int indice = 0;
-        int opc;
-
-        //carga el archivo al arreglo
-        indice = manejadorArchivo.leerArchivo(crud.getGrupo());
-        crud.setIndice(indice);
-
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -568,16 +797,24 @@ public class VistaAgencia extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaAgencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAgencia.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaAgencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAgencia.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaAgencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAgencia.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaAgencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAgencia.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -588,9 +825,6 @@ public class VistaAgencia extends javax.swing.JFrame {
             }
         });
 
-        //guarda el arreglo en el archivo
-        manejadorArchivo.escribirArchivo(crud.getGrupo(), crud.getIndice());
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -598,16 +832,22 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JButton bActualizarAutomovil;
     private javax.swing.JButton bActualizarMotocicleta;
     private javax.swing.JButton bConsultaAutomovil;
+    private javax.swing.JButton bConsultarAutoElectrico;
+    private javax.swing.JButton bConsultarMotocicleta;
     private javax.swing.JButton bCrearAutoElectrico;
     private javax.swing.JButton bCrearAutomovil;
     private javax.swing.JButton bCrearMotocicleta;
     private javax.swing.JButton bEliminarAutoElectrico;
     private javax.swing.JButton bEliminarAutomovil;
     private javax.swing.JButton bEliminarMotocicleta;
+    private javax.swing.JButton bSalir;
     private javax.swing.JComboBox<String> cbTipoVehiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -628,18 +868,19 @@ public class VistaAgencia extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaToAutoElectrico;
     private javax.swing.JTextArea jTextAreaToAutomovil;
     private javax.swing.JTextArea jTextAreaToMotocicleta;
-    private myprojectoescuela.Motocicleta motocicleta1;
     private javax.swing.JTabbedPane tbTipoVehiculo;
+    private javax.swing.JTextField tfAnioModelo;
     private javax.swing.JTextField tfCaballosFuerza;
+    private javax.swing.JTextField tfCaballosFuerza_AutoElectrico;
     private javax.swing.JTextField tfColor;
     private javax.swing.JTextField tfDuracionBateria;
     private javax.swing.JTextField tfMarca;
     private javax.swing.JTextField tfModelo;
+    private javax.swing.JTextField tfNoPuerta_AutoElectrico;
     private javax.swing.JTextField tfNoPuertas;
     private javax.swing.JTextField tfNoSerie;
     private javax.swing.JTextField tfPotencia;
     private javax.swing.JTextField tfRodada;
     // End of variables declaration//GEN-END:variables
-    private Vehiculo vehiculo;
 
 }

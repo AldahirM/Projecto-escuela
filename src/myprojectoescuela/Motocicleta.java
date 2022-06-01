@@ -5,14 +5,14 @@ public class Motocicleta extends Vehiculo {
     private float potencia;
     private byte rodada;
 
-    public Motocicleta(float potencia, byte rodada, String noSerie, String marca, String modelo, char color) {
-        super(noSerie, marca, modelo, color);
+    public Motocicleta(float potencia, byte rodada, String noSerie, String marca, String modelo, short anioModelo, String color) {
+        super(noSerie, marca, modelo, anioModelo, color);
         setPotencia(potencia);
         setRodada(rodada);
     }
 
     public Motocicleta() {
-        this(1f, (byte) 1, "Sin numero de serie", "Sin marca", "Sin modelo", 'A');
+        this(1f, (byte) 1, "Sin numero de serie", "Sin marca", "Sin modelo", (short) 1981, "SIN COLOR");
     }
 
     /**
@@ -46,19 +46,24 @@ public class Motocicleta extends Vehiculo {
     @Override
     public String toString() {
         return super.toString()
-                + "Motocicleta{" + "potencia=" + potencia + ", rodada=" + rodada + '}';
+                + ", potencia:" + potencia + ", rodada:" + rodada;
     }
 
     @Override
     public double costoVehiculo() {
-
-        return 0;
+        double costo = 30000;
+        if (getPotencia() > 7200) {
+            double costoTotal = costo + (getPotencia() * 3);
+            return costoTotal;
+        }
+        double costoTotal = costo + (getPotencia() * 2);
+        return costoTotal;
     }
 
     @Override
     public String combustible() {
 
-        return null;
+        return "Combustible recomendado: Gasolina de 87 octanos";
 
     }
 }

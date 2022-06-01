@@ -7,17 +7,19 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     private String noSerie;
     private String marca;
     private String modelo;
-    private char color;
+    private short anioModelo;
+    private String color;
 
-    public Vehiculo(String noSerie, String marca, String modelo, char color) {
+    public Vehiculo(String noSerie, String marca, String modelo, short anioModelo, String color) {
         setNoSerie(noSerie);
         setMarca(marca);
         setModelo(modelo);
+        setAnioModelo(anioModelo);
         setColor(color);
     }
 
     public Vehiculo() {
-        this("SIN NÚMERO", "SIN MARCA", "SIN MODELO", 'N');
+        this("SIN NÚMERO", "SIN MARCA", "SIN MODELO", (short) 1981, "SIN COLOR");
     }
 
     public abstract double costoVehiculo();
@@ -69,20 +71,34 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo> {
     /**
      * @return the color
      */
-    public char getColor() {
+    public String getColor() {
         return color;
     }
 
     /**
      * @param color the color to set
      */
-    public void setColor(char color) {
+    public void setColor(String color) {
         this.color = color;
+    }
+
+    /**
+     * @return the anioModelo
+     */
+    public short getAnioModelo() {
+        return anioModelo;
+    }
+
+    /**
+     * @param anioModelo the anioModelo to set
+     */
+    public void setAnioModelo(short anioModelo) {
+        this.anioModelo = anioModelo > 1980 ? anioModelo : 1981;
     }
 
     @Override
     public String toString() {
-        return "Vehiculo{" + "noSerie=" + noSerie + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + '}';
+        return "noSerie:" + noSerie + ", marca:" + marca + ", modelo:" + modelo + ", año del modelo:" + anioModelo + ", color:" + color;
     }
 
     @Override

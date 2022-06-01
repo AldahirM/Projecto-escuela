@@ -1,5 +1,7 @@
 package myprojectoescuela;
 
+import static com.sun.org.apache.bcel.internal.Repository.instanceOf;
+
 public class CRUD {
 
     private Vehiculo[] grupo;
@@ -42,11 +44,41 @@ public class CRUD {
         grupo[indice] = vehiculo;
         indice++;
     }
-    
+
     public String read() {
         String cadena = "";
         for (int i = 0; i < indice; i++) {
             cadena += grupo[i].toString() + "\n";
+        }
+        return cadena;
+    }
+
+    public String readAutomovil() {
+        String cadena = "";
+        for (int i = 0; i < indice; i++) {
+            if (grupo[i] instanceof Automovil && !(grupo[i] instanceof AutoElectrico)) {
+                cadena += grupo[i].toString() + ", Costo del vehiculo:" + grupo[i].costoVehiculo() + "\n";
+            }
+        }
+        return cadena;
+    }
+
+    public String readMotocicleta() {
+        String cadena = "";
+        for (int i = 0; i < indice; i++) {
+            if (grupo[i] instanceof Motocicleta) {
+                cadena += grupo[i].toString() + ", Costo del vehiculo:" + grupo[i].costoVehiculo() + "\n";
+            }
+        }
+        return cadena;
+    }
+
+    public String readAutoElectrico() {
+        String cadena = "";
+        for (int i = 0; i < indice; i++) {
+            if (grupo[i] instanceof AutoElectrico) {
+                cadena += grupo[i].toString() + ", Costo del vehiculo:" + grupo[i].costoVehiculo() + "\n";
+            }
         }
         return cadena;
     }
@@ -78,9 +110,10 @@ public class CRUD {
     }
 
     public Vehiculo consultaInd(int ind) {
-        if (ind > 0 && ind < indice) {
+        if (ind > -1 && ind < indice) {
             return grupo[ind];
         }
         return null;
     }
+
 }
